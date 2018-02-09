@@ -1,0 +1,58 @@
+
+
+	{
+		"films":[			
+			{ 
+			  "title":"loserTrans",
+			  "role":"director",
+			  "fechaProduccion":"2017",
+			  "link":"#",
+			  "img":"/img/defaultFilm.jpg",
+			  "sip":"sipLoser"
+			  
+			},
+			{ 
+			  "title":"trickTrans",
+			  "role":"directorPhoto",
+			  "fechaProduccion":"2016",
+			  "link":"https://www.youtube.com/watch?v=Lis9h5qS5OI",
+			  "img":"https://img.youtube.com/vi/Lis9h5qS5OI/0.jpg",
+			  "sip":"sipTrick"			  
+			},
+			{ 
+			  "title":"olvidoTrans",
+			  "role":"directorPhoto",
+			  "fechaProduccion":"2016",
+			  "link":"https://www.youtube.com/watch?v=jg-R1PimsUY",
+			  "img":"https://img.youtube.com/vi/jg-R1PimsUY/0.jpg",
+			  "sip":"sipOlvido"			  
+			},
+			{ 
+			  "title":"cleanTimeTrans",
+			  "role":"directorPhoto",
+			  "fechaProduccion":"2015",
+			  "link":"https://www.youtube.com/watch?v=gwUdBuJPlHc",
+			  "img":"https://img.youtube.com/vi/gwUdBuJPlHc/0.jpg",
+			  "sip":"sipCleanTime"
+			},
+			{ 
+			  "title":"childGameTrans",
+			  "role":"directorPhoto",
+			  "fechaProduccion":"2015",
+			  "link":"https://www.youtube.com/watch?v=YLYIRZiPQBE",
+			  "img":"https://img.youtube.com/vi/YLYIRZiPQBE/0.jpg",
+			  "sip":"sipChildGame"
+			  
+			},
+			{ 
+			  "title":"Traumata",
+			  "role":"directorPhoto",
+			  "fechaProduccion":"2014",
+			  "link":"#",
+			  "img":"/img/defaultFilm.jpg",
+			  "sip":"sipTraumata"			  
+			}
+			
+		]
+	
+	}

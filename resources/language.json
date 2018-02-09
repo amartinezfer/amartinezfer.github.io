@@ -1,0 +1,55 @@
+	{	
+	"es":
+		{
+			"brand":"Alberto Martínez Fernández",
+			"software":"Desarrollador de Software",
+			"photographer":"Fotógrafo",
+			"cine":"Cine",
+			"subTitleHomeCine":"Sólo los soñadores mueven montañas.",
+			"galleryTitle":"Galeria de Producciones",
+			"directorPhoto":"Director de fotografía",
+			"director":"Director",
+			"filmmakerDescription":"Interesado desde siempre en el mundo audio visual pero con una vocación tardia, en el año 2012 en Torrejón de Ardoz se empezaró a impartir un curso de cine que duró 3 años de la mano de Jesus Usero. En esos años aprendimos desde guión , producción y analisis cinematografico.<br/><br/> El resto es historia.",
+			"loserTrans":"Loser Under My Skin",
+			"childGameTrans":"Juego de niños",
+			"cleanTimeTrans":"La hora de la limpieza",
+			"olvidoTrans":"Ni olvido, ni perdón",
+			"trickTrans":"Haber elegido trato",
+			"sipTraumata":"Un soldado es violado en acto de servicio.",
+			"sipChildGame":"En una noche de verano una mujer no encuentra a su hija en la casa.",
+			"sipCleanTime":"Todos los dias en el trabajo un hombre intenta ir al baño pero nunca puede, hasta...",
+			"sipOlvido":"Una mujer vuelve a casa a acompañar a su padre en el lecho de muerte.",
+			"sipTrick":"Una niña es secuentrada en la noche de Halloween.",
+			"sipLoser":"Alex termina la ultima hoja de su libro y tiene que decidir...",
+			"previous":"Anterior",
+			"next":"Siguiente",
+			"homeIntro":"<br/>Esta usted en la web personal de Alberto Martínez Fernández, el contenido se irá actualizando según el tiempo lo permita, para saber más sobre mi busque en <a target='_blank' href='www.google.es'>Google</a> o contacte por email a <a href='mailto:amartinezfer@gmail.com'>amartinezfer@gmail.com</a>."
+		},
+	"en":
+		{
+			"brand":"Alberto Martínez Fernández",
+			"software":"Software Developer",
+			"photographer":"Photographer",
+			"cine":"FilmMaker",
+			"subTitleHomeCine":"Only dreamers move mountains.",
+			"galleryTitle":"Filmmaker Gallery",
+			"directorPhoto":"Director of Photography",
+			"director":"Director",
+			"filmmakerDescription":"Interested always in the audio visual world but with a late vocation, in 2012 in Torrejón de Ardoz began to teach a film course that lasted 3 years by the hand of Jesus Usero. <br/><br/>The following is history",
+			"loserTrans":"Loser Under My Skin",
+			"childGameTrans":"Children Games",
+			"cleanTimeTrans":"The Clean Time",
+			"olvidoTrans":"Not forgetting, Not forgiveness",
+			"trickTrans":"Having chosen trick",
+			"sipTraumata":"A soldier is raped in an act of service.",
+			"sipChildGame":"On a summer night a woman does not find her daughter in the house.",
+			"sipCleanTime":"Every day at work a man tries to go to the bathroom but he never can't do it  ...",
+			"sipOlvido":"A woman returns home to accompany her father on his deathbed.",
+			"sipTrick":"A girl is kidnap on Hallowen night",
+			"sipLoser":"Alex finishes the last page of his book and has to decide ...",
+			"previous":"Previous",
+			"next":"Next",
+			"homeIntro":"<br/>You are on the personal website of Alberto Martínez Fernández, the content will be updated as time permits, to know more about my search in <a target='_blank' href='www.google.es'> Google </ a > or contact by email at <a href='mailto:amartinezfer@gmail.com'> amartinezfer@gmail.com</a>."
+		}				
+			
+	}

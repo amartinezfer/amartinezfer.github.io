@@ -1,0 +1,24 @@
+
+ <h1 class="my-4 text-center text-lg-left i18n" data-i18n="galleryTitle" ></h1>
+ <p class='i18n' data-i18n="filmmakerDescription">
+	
+ <p/>
+ <div class="row text-center text-lg-left">
+ {{#each films as |myFilm|}}		 
+		<div class="col-lg-3 col-md-4 col-xs-6">
+			<div  class="d-block mb-4 h-100">
+				<div class="w-100 mt-1 i18n tc"  data-i18n="{{myFilm.fechaProduccion}}"></div>
+				<div class="w-100 mt-1 i18n tc"  data-i18n="{{myFilm.role}}"></div>				
+				<a href="{{myFilm.link}}"  target="_blank">
+					<img class="img-fluid img-thumbnail" src="{{myFilm.img}}" alt="">			
+					<div class="caption btn btn-info w-100 mt-1 i18n" data-i18n="{{myFilm.title}}"></div>
+				</a>
+				<div class="w-100 mt-1 tj"  >
+					<p class='i18n' data-i18n="{{myFilm.sip}}"></p>
+				</div>
+			</div>
+		</div>     	 
+{{/each}}
+</div>
+
+
