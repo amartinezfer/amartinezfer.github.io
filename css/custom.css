@@ -22,3 +22,8 @@
 .link {
     text-decoration: none !important;
 }
+
+.formacion li:nth-child(odd){
+	background-color:LightGray ;
+	color:#4E5D6C;
+}
