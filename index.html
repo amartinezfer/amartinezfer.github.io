@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" page="home">
   <head>
+		
+		
+		
 
 		<!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -19,22 +22,32 @@
 	<meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
 	<meta http-equiv="pragma" content="no-cache" />
 	
-    <title>Alberto Martínez Fotografía</title>
-
+	  <link rel="manifest" href="/manifest.json">
 
 		<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+		
 		<script>
-			var OneSignal = window.OneSignal || [];
-			OneSignal.push(function() {
-				OneSignal.init({
-					appId: "a1ca8a66-b853-46e4-a0fb-55a7528cff32",
-					autoRegister: true,
-					notifyButton: {
-						enable: true,
-					},
-				});
-			});
+		 var OneSignal = window.OneSignal || [];
+			OneSignal.push(["init", {
+				appId: "a1ca8a66-b853-46e4-a0fb-55a7528cff32",
+				autoRegister: false, /* Set to true to automatically prompt visitors */
+				notifyButton: {
+						enable: true /* Set to false to hide */
+				},welcomeNotification: {
+					"title": "My Custom Title",
+					"message": "Thanks for subscribing!"
+        // "url": "" /* Leave commented for the notification to not open a window on Chrome and Firefox (on Safari, it opens to your webpage) */
+   			 },
+      	notifyButton: {
+						enable: true ,
+						size: 'medium',
+						position: 'bottom-right'
+      	}
+			}]);
 		</script>
+
+    <title>Alberto Martínez Fotografía</title>
+
 
     <!-- Bootstrap core CSS -->
     <link href="/js/lib/bootstrap/css/theme.min.css" rel="stylesheet">
@@ -123,7 +136,9 @@
       </div>
     </section>
    <!-- Footer -->
-    <footer id='footer' class="py-5 bg-dark"></footer>
+    <footer id='footer' class="py-5 bg-dark">
+			
+		</footer>
 
   </body>
 
