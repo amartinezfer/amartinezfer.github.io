@@ -3,11 +3,20 @@
 	{
 		"films":[			
 			{ 
+			  "title":"gameover",
+			  "role":"director",
+			  "fechaProduccion":"2018",
+			  "link":"#",
+			  "img":"/img/gameover.png",
+			  "sip":"sipGameover"
+			  
+			},
+			{ 
 			  "title":"loserTrans",
 			  "role":"director",
 			  "fechaProduccion":"2017",
 			  "link":"#",
-			  "img":"/img/defaultFilm.jpg",
+			  "img":"/img/loser.png",
 			  "sip":"sipLoser"
 			  
 			},
@@ -16,7 +25,7 @@
 			  "role":"directorPhoto",
 			  "fechaProduccion":"2016",
 			  "link":"https://www.youtube.com/watch?v=Lis9h5qS5OI",
-			  "img":"https://img.youtube.com/vi/Lis9h5qS5OI/0.jpg",
+			  "img":"/img/trato.jpg",
 			  "sip":"sipTrick"			  
 			},
 			{ 
@@ -24,7 +33,7 @@
 			  "role":"directorPhoto",
 			  "fechaProduccion":"2016",
 			  "link":"https://www.youtube.com/watch?v=jg-R1PimsUY",
-			  "img":"https://img.youtube.com/vi/jg-R1PimsUY/0.jpg",
+			  "img":"/img/olvido.jpg",
 			  "sip":"sipOlvido"			  
 			},
 			{ 
@@ -32,7 +41,7 @@
 			  "role":"directorPhoto",
 			  "fechaProduccion":"2015",
 			  "link":"https://www.youtube.com/watch?v=gwUdBuJPlHc",
-			  "img":"https://img.youtube.com/vi/gwUdBuJPlHc/0.jpg",
+			  "img":"/img/hora.jpg",
 			  "sip":"sipCleanTime"
 			},
 			{ 
@@ -40,7 +49,7 @@
 			  "role":"directorPhoto",
 			  "fechaProduccion":"2015",
 			  "link":"https://www.youtube.com/watch?v=YLYIRZiPQBE",
-			  "img":"https://img.youtube.com/vi/YLYIRZiPQBE/0.jpg",
+			  "img":"/img/juego.jpg",
 			  "sip":"sipChildGame"
 			  
 			},
@@ -49,7 +58,7 @@
 			  "role":"directorPhoto",
 			  "fechaProduccion":"2014",
 			  "link":"#",
-			  "img":"/img/defaultFilm.jpg",
+			  "img":"/img/traumata.jpg",
 			  "sip":"sipTraumata"			  
 			}
 			
