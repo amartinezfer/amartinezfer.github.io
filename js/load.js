@@ -89,11 +89,12 @@
 							} else if (app.getUrlParameter('project') !== undefined ){
 
 								app.loadTemplate ('/templates/project.hbs',function(templateProject) {
-									app.getRecordAirtable(app.getUrlParameter('project'), function (dataProject) {																		
+									app.getRecordAirtable(app.getUrlParameter('project'), function (dataProject) {
+																											
 										$('#bodyContainer').prepend (templateProject(dataProject)).each(function() {													
-										
+											
 											$('img').on('click',function(v){
-												console.log($(v.target).attr('data-img'));
+										
 												$.modal('<img  src="'+ $(v.target).attr('data-img')+'?_hc='+new Date().getTime() + '"/>',{
 													opacity:50,
 													close :true,
@@ -107,10 +108,9 @@
 											});
 
 											$('#listCrew > div').each(function (t,v){												
-												app.getRecordAirtable($(v).attr('id'),function(dataCrew){
-													
+												app.getRecordAirtable($(v).attr('id'),function(dataCrew){	
+													console.log(dataCrew);												;
 													$(v).append('<a target="_blank" href="'+ dataCrew.fields.url+'">: '+dataCrew.fields.name+'</a>');
-
 												});
 											});
 
