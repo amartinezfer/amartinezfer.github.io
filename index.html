@@ -22,7 +22,20 @@
     <title>Alberto Martínez Fotografía</title>
 
 
-
+		<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+		<script>
+			var OneSignal = window.OneSignal || [];
+			OneSignal.push(function() {
+				OneSignal.init({
+					appId: "a1ca8a66-b853-46e4-a0fb-55a7528cff32",
+					autoRegister: false,
+					notifyButton: {
+						enable: true,
+					},
+				});
+			});
+		</script>
+		
     <!-- Bootstrap core CSS -->
     <link href="/js/lib/bootstrap/css/theme.min.css" rel="stylesheet">
 
