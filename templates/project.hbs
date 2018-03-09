@@ -12,8 +12,11 @@
         </div>
         {{/if}}
           <div class="item well">
-          <div id='listCrew' " >            
-             {{#each this.fields.modelos as |modelo| }}
+          <div id='listCrew' >      
+              {{#each this.fields.organizador as |organizador| }}
+                <div  id='{{organizador}}' class='i18n mr2 ttc' data-i18n='organizador'></div>
+              {{/each}}      
+               {{#each this.fields.modelos as |modelo| }}
                 <div  id='{{modelo}}' class='i18n mr2 ttc' data-i18n='model'></div>
               {{/each}}
                {{#each this.fields.maquilladoras as |maquilladora| }}
