@@ -19,6 +19,6 @@
 	width: 100%;
 }
 
-.item a:hover{
-	text-decoration: none;
+.link {
+    text-decoration: none !important;
 }
