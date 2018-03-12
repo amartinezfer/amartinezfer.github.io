@@ -14,25 +14,39 @@
           <div class="item well">
           <div id='listCrew' >      
               {{#each this.fields.organizador as |organizador| }}
-                <div  id='{{organizador}}' class='i18n mr2 ttc' data-i18n='organizador'></div>
+                <div  id='{{organizador}}' class='mr2 ttc' >
+                    <span class='i18n ttc' data-i18n='organizador'></span>
+                </div>               
               {{/each}}      
                {{#each this.fields.modelos as |modelo| }}
-                <div  id='{{modelo}}' class='i18n mr2 ttc' data-i18n='model'></div>
+                <div  id='{{modelo}}' class=' mr2 ttc'>
+                  <span class='i18n ttc' data-i18n='model'></span>
+                </div>
               {{/each}}
                {{#each this.fields.maquilladoras as |maquilladora| }}
-                <div id='{{maquilladora}}' class='i18n mr2 ttc' data-i18n='maquillaje'></div>
+                <div id='{{maquilladora}}' class='mr2'>
+                       <span class='i18n ttc' data-i18n='maquillaje'></span>
+                </div>
               {{/each}}             
                {{#each this.fields.peluqueria as |peluqueria| }}
-                <div id='{{peluqueria}}' class='i18n mr2 ttc' data-i18n='peluqueria'></div>
+                <div id='{{peluqueria}}' class=' mr2 ' >
+                     <span class='i18n ttc' data-i18n='peluqueria'></span>
+                </div>
               {{/each}}
-                 {{#each this.fields.estilista as |estilista| }}
-                <div id='{{estilista}}' class='i18n mr2 ttc' data-i18n='estilista'></div>
+              {{#each this.fields.estilista as |estilista| }}
+                  <div id='{{estilista}}' class='mr2'>
+                      <span class='i18n ttc' data-i18n='estilista'></span>
+                  </div>
               {{/each}}
                  {{#each this.fields.asistente as |asistente| }}
-                <div id='{{asistente}}' class='i18n mr2 ttc' data-i18n='asistente'></div>
+                <div id='{{asistente}}' class='mr2' >
+                      <span class='i18n ttc' data-i18n='asistente'></span>
+                </div>
               {{/each}}  
-                 {{#each this.fields.fotografo as |fotografo| }}
-                <div id='{{fotografo}}' class='i18n mr2 ttc' data-i18n='fotografo'></div>
+                {{#each this.fields.fotografo as |fotografo| }}
+                <div id='{{fotografo}}' class='mr2' >
+                    <span class='i18n ttc' data-i18n='fotografo'></span>
+                </div>
               {{/each}}                
           </div>
           </div>
