@@ -93,20 +93,20 @@
 																											
 										$('#bodyContainer').prepend (templateProject(dataProject)).each(function() {													
 											
+
 											
-
-											$('#listCrew > div').each(function (t,v){												
-												app.getRecordAirtableSync($(v).attr('id'),function(dataCrew){	
-													console.log(dataCrew);												;
-													$(v).append('<a target="_blank" href="'+ dataCrew.fields.url+'">: '+dataCrew.fields.name+'</a>');
-												});
-											});
-
-											app.loadTemplate ('/templates/footer.hbs',function(template) {	
-												$('#footer').prepend(template);								
-												callback();	
-											}); 	
 										});
+										
+										$('#listCrew > div').each(function (t,v){												
+											app.getRecordAirtableSync($(v).attr('id'),function(dataCrew){	
+												console.log(dataCrew);												;
+												$(v).append('<a target="_blank" href="'+ dataCrew.fields.url+'">: '+dataCrew.fields.name+'</a>');
+											});
+										});
+										app.loadTemplate ('/templates/footer.hbs',function(template) {	
+											$('#footer').prepend(template);								
+											callback();	
+										}); 
 									});											
 								});
 
