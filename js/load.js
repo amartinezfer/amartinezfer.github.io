@@ -93,22 +93,10 @@
 																											
 										$('#bodyContainer').prepend (templateProject(dataProject)).each(function() {													
 											
-											$('img').on('click',function(v){
-										
-												$.modal('<img  src="'+ $(v.target).attr('data-img')+'?_hc='+new Date().getTime() + '"/>',{
-													opacity:50,
-													close :true,
-													overlayCss: {backgroundColor:"#fff"},
-													overlayClose :true,
-													minWidth: 600,
-													width:600,
-													minHeight:450, 												
-													closeHTML: "<a style='color:white;background-color:black' href='#'> Close </a>"
-												});
-											});
+											
 
 											$('#listCrew > div').each(function (t,v){												
-												app.getRecordAirtable($(v).attr('id'),function(dataCrew){	
+												app.getRecordAirtableSync($(v).attr('id'),function(dataCrew){	
 													console.log(dataCrew);												;
 													$(v).append('<a target="_blank" href="'+ dataCrew.fields.url+'">: '+dataCrew.fields.name+'</a>');
 												});
@@ -220,6 +208,15 @@
 		   app.getRecordAirtable = function (id,callback) {				
 			$.ajax({
 				url: 'https://api.airtable.com/v0/appsYO7qZ88De1ddY/categorias/'+id+'?api_key=keyG5AhVcdlRu4UfU',									
+				success: function (data) {
+					callback(data)
+										
+				}
+			});		
+			 app.getRecordAirtableSync = function (id,callback) {				
+			$.ajax({
+				url: 'https://api.airtable.com/v0/appsYO7qZ88De1ddY/categorias/'+id+'?api_key=keyG5AhVcdlRu4UfU',									
+				async: false,
 				success: function (data) {
 					callback(data)
 										
