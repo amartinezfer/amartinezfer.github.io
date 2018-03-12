@@ -100,7 +100,7 @@
 													$(v).append('<a target="_blank" href="'+ dataCrew.fields.url+'">: '+dataCrew.fields.name+'</a>');
 												});
 											});
-										 }, 1000);
+										 }, 3000);
 
 										app.loadTemplate ('/templates/footer.hbs',function(template) {	
 											$('#footer').prepend(template);								
