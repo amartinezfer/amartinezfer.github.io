@@ -101,10 +101,7 @@
 												});												
 											});											
 											
-											app.loadTemplate ('/templates/footer.hbs',function(template) {	
-												$('#footer').prepend(template);								
-												callback();													
-											}); 
+											 
 										});													
 										
 									});											
