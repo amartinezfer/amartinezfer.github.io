@@ -97,7 +97,7 @@
 											$('#listCrew > div').each(function (t,v){												
 												app.getRecordAirtableSync($(v).attr('id'),function(dataCrew){													
 													$(v)._t($(v).attr('data-i18n'));											;
-													$(v).append('<a target="_blank" href="'+ dataCrew.fields.url+'">: '+dataCrew.fields.name+'</a>');
+													$(v).append(':<a target="_blank" href="'+ dataCrew.fields.url+'"> '+dataCrew.fields.name+'</a>');
 													
 												});												
 											});											
