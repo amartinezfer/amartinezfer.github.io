@@ -91,18 +91,17 @@
 								app.loadTemplate ('/templates/project.hbs',function(templateProject) {
 									app.getRecordAirtable(app.getUrlParameter('project'), function (dataProject) {
 																											
-										$('#bodyContainer').prepend (templateProject(dataProject)).each(function() {													
-											
-
-											
-										});
+										$('#bodyContainer').prepend (templateProject(dataProject));
 										
-										$('#listCrew > div').each(function (t,v){												
-											app.getRecordAirtableSync($(v).attr('id'),function(dataCrew){	
-												console.log(dataCrew);												;
-												$(v).append('<a target="_blank" href="'+ dataCrew.fields.url+'">: '+dataCrew.fields.name+'</a>');
+										setTimeout(function(){
+											$('#listCrew > div').each(function (t,v){												
+												app.getRecordAirtableSync($(v).attr('id'),function(dataCrew){	
+													console.log(dataCrew);												;
+													$(v).append('<a target="_blank" href="'+ dataCrew.fields.url+'">: '+dataCrew.fields.name+'</a>');
+												});
 											});
-										});
+										 }, 1000);
+
 										app.loadTemplate ('/templates/footer.hbs',function(template) {	
 											$('#footer').prepend(template);								
 											callback();	
