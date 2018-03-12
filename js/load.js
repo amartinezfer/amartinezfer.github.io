@@ -95,8 +95,7 @@
 										$('#bodyContainer').prepend (templateProject(dataProject)).each(function(){
 										
 											$('#listCrew > div').each(function (t,v){												
-												app.getRecordAirtable($(v).attr('id'),function(dataCrew){	
-													console.log(dataCrew);	
+												app.getRecordAirtableSync($(v).attr('id'),function(dataCrew){													
 													$(v)._t($(v).attr('data-i18n'));											;
 													$(v).append('<a target="_blank" href="'+ dataCrew.fields.url+'">: '+dataCrew.fields.name+'</a>');
 													
