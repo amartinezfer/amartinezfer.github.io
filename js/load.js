@@ -95,8 +95,7 @@
 										
 										setTimeout(function(){
 											$('#listCrew > div').each(function (t,v){												
-												app.getRecordAirtableSync($(v).attr('id'),function(dataCrew){	
-													console.log(dataCrew);												;
+												app.getRecordAirtableSync($(v).attr('id'),function(dataCrew){																							;
 													$(v).append('<a target="_blank" href="'+ dataCrew.fields.url+'">: '+dataCrew.fields.name+'</a>');
 												});
 											});
@@ -197,7 +196,7 @@
 
 		   app.getCategoryAirtable = function (callback) {				
 				$.ajax({
-					url: 'https://api.airtable.com/v0/appsYO7qZ88De1ddY/categorias?api_key=keyG5AhVcdlRu4UfU',					
+					url: 'https://api.airtable.com/v0/appsYO7qZ88De1ddY/categorias?api_key=keyG5AhVcdlRu4UfU&_hc='+new Date().getTime(),					
 					success: function (data) {
 						callback(data)						
 					}
@@ -206,7 +205,7 @@
 
 		   app.getRecordAirtable = function (id,callback) {				
 			$.ajax({
-				url: 'https://api.airtable.com/v0/appsYO7qZ88De1ddY/categorias/'+id+'?api_key=keyG5AhVcdlRu4UfU',									
+				url: 'https://api.airtable.com/v0/appsYO7qZ88De1ddY/categorias/'+id+'?api_key=keyG5AhVcdlRu4UfU&_hc='+new Date().getTime(),									
 				success: function (data) {
 					callback(data)
 										
@@ -214,7 +213,7 @@
 			});		
 			 app.getRecordAirtableSync = function (id,callback) {				
 			$.ajax({
-				url: 'https://api.airtable.com/v0/appsYO7qZ88De1ddY/categorias/'+id+'?api_key=keyG5AhVcdlRu4UfU',									
+				url: 'https://api.airtable.com/v0/appsYO7qZ88De1ddY/categorias/'+id+'?api_key=keyG5AhVcdlRu4UfU&_hc='+new Date().getTime(),									
 				async: false,
 				success: function (data) {
 					callback(data)
