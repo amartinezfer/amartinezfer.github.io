@@ -93,14 +93,16 @@
 									app.getRecordAirtable(app.getUrlParameter('project'), function (dataProject) {
 																											
 										$('#bodyContainer').prepend (templateProject(dataProject)).each(function(){
-											callback();
+										
 											$('#listCrew > div').each(function (t,v){												
 												app.getRecordAirtable($(v).attr('id'),function(dataCrew){	
-													console.log(dataCrew);												;
+													console.log(dataCrew);	
+													$(v)._t($(v).attr('data-i18n'));											;
 													$(v).append('<a target="_blank" href="'+ dataCrew.fields.url+'">: '+dataCrew.fields.name+'</a>');
+													
 												});												
 											});											
-											
+												
 											 
 										});													
 										
