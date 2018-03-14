@@ -10,7 +10,8 @@
 			bootstrap:'bootstrap/js/bootstrap.min',
 			i18n:'jquery18i/js/jquery18i.min',
 			simplemodal:'jquery/js/jquery.simplemodal.1.4.4.min',
-			handlebars:'handlebars/js/handlebars-v4.0.11'			
+			handlebars:'handlebars/js/handlebars-v4.0.11',
+			cookie:'cookie/jquery.cookiebar'				
 		
 			
 		},
@@ -23,6 +24,9 @@
 					exports: 'i18n'
 				},
 				bootstrap:{
+					deps : ['jquery']
+				},
+				cookie:{
 					deps : ['jquery']
 				}
 				
@@ -150,7 +154,19 @@
 									  						  
 						  }																								
 				});
-			  
+				var txtCookie='We use cookies to track usage and preferences:';
+				var txtAccept=' Accept';
+				if ("es" === $('html').attr('lang')){
+					txtCookie='Esta web utiliza cookies para seguimiento y preferencias:';
+					txtAccept=' Aceptar';
+				} 
+
+				$.cookieBar({
+					message:txtCookie,
+					acceptText: txtAccept,
+					acceptButton: true,
+					fixed: false
+				});
 		  }
 		  
 		  app.processData = function (file,template,callback){
@@ -232,14 +248,14 @@
 	
 		
 	
-require(['app','jquery','bootstrap'], function (App,jQuery) {
+require(['app','jquery','bootstrap',"cookie"], function (App,jQuery) {
 // Execute App
 	$(document).ready(function(){
 
 		var userLang = navigator.language || navigator.userLanguage; 
 		
 		$('html').attr('lang',userLang.split('-')[0]);
-		
+	
 		
 		App.initPage($('html').attr('page'),function(){
 
@@ -279,8 +295,8 @@ require(['app','jquery','bootstrap'], function (App,jQuery) {
 
 			});
 		});
-	
 		
+	
 		
 	});
 });						
