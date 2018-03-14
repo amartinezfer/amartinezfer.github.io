@@ -134,9 +134,9 @@
 			//Displays the cookie bar if arguments met
 			if(options.forceShow || cookieValue=='enabled' || cookieValue==''){
 				if(options.append){
-					$(options.element).append('<div class="mw5 mw8-ns center  bg-navy  pa3 ph5-ns" id="cookie-bar"'+fixed+zindex+'><p>'+message+acceptButton+declineButton+policyButton+'</p></div>');
+					$(options.element).append('<div class=" center  bg-navy  pa3 ph5-ns" id="cookie-bar"'+fixed+zindex+'><p>'+message+acceptButton+declineButton+policyButton+'</p></div>');
 				}else{
-					$(options.element).prepend('<div class="mw5 mw8-ns center bg-navy  pa3 ph5-ns" id="cookie-bar"'+fixed+zindex+'><p>'+message+acceptButton+declineButton+policyButton+'</p></div>');
+					$(options.element).prepend('<div class="  center bg-navy  pa3 ph5-ns" id="cookie-bar"'+fixed+zindex+'><p>'+message+acceptButton+declineButton+policyButton+'</p></div>');
 				}
 			}
 			
