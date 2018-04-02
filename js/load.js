@@ -11,8 +11,7 @@
 			handlebars:'handlebars/js/handlebars-v4.0.11',
 			cookie:'cookie/jquery.cookiebar',
 			chart:'chart/Chart.min',
-			timeline:'timeline/main',
-			html2canvas:'html2canvas.min'				
+			timeline:'timeline/main'					
 		
 			
 		},
@@ -35,7 +34,7 @@
 	});
 	
 	
-	define ('app',["jquery","i18n","handlebars","simplemodal",'chart','html2canvas'],function(jQuery,i18n,handlebars,simplemodal,chart,html2canvas){		
+	define ('app',["jquery","i18n","handlebars","simplemodal",'chart'],function(jQuery,i18n,handlebars,simplemodal,chart){		
 		 
 		var app={};		 
 		  app.initPage = function (page,callback){
