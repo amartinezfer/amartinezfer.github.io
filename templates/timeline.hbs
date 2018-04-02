@@ -1,0 +1,29 @@
+  <section class="cd-timeline js-cd-timeline">
+        <div class="cd-timeline__container">
+          
+           {{#each this as |node|}}	
+          <div class="cd-timeline__block js-cd-block">
+            <div class="cd-timeline__img {{node.classColor}} js-cd-img cd-is-hidden">
+              <img src="{{node.icon}}" alt="Movie">
+            </div> <!-- cd-timeline__img -->
+    
+            <div class="cd-timeline__content js-cd-content cd-is-hidden">
+              <h2>{{node.name}}{{#if node.role}} / {{node.role}} {{/if}} </h2>
+              {{#if node.company}}              
+                <div><span  class='i18n ttu' data-i18n='empresa'></span>:<span> {{node.company.name}}</span></div>
+              {{/if}}
+           
+              {{#if node.client}}     
+                 <div><span class='i18n ttu' data-i18n='cliente'></span>:<span> {{node.client.name}}</span></div>                              
+               {{/if}}
+                <p  class='i18n'  data-i18n='{{node.description}}' ></p>   
+              <span class="cd-timeline__date">{{node.year}}</span>
+              {{#if node.dataRolesValues}}
+              <canvas  data-values="{{node.dataRolesValues}}" data-labels="{{node.dataRolesLabel}}"></canvas>
+              {{/if}}
+
+            </div> <!-- cd-timeline__content -->
+          </div> <!-- cd-timeline__block -->    
+         {{/each}}
+        </div>
+      </section>

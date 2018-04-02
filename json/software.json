@@ -1,0 +1,247 @@
+
+
+[
+    {
+        "type":"project",
+        "name":"IOMP",
+        "icon":"img/Support_50px.png",
+        "classColor":"cd-timeline__img--movie",
+        "year":"2017-2018",
+        "role":"Fullstack Java Developer",
+        "dataRolesLabel":["Java","Spring","Javascript","Ext.js","Scrum"],
+        "dataRolesValues":[100,90,90,60,70],
+        "description":"iompDescription",
+        "company":{
+            "name":"Indra",
+            "web":"www.indra.es"
+        },
+        "client":{
+            "name":"NATS",
+            "web":"https://www.nats.aero/"
+        },"order":1        
+    },
+    {
+        "type":"project",
+        "name":"IAG CARGO RE-BRANDING",
+        "icon":"img/Support_50px.png",
+        "classColor":"cd-timeline__img--movie",
+        "year":"2016-2017",
+        "role":"Fullstack Java Developer",
+        "dataRolesLabel":["Java","BBDD Oracle","Oracle WebCenter Site","javascript","JQuery","Bootstrap","Scrumm","HTML5"],
+        "dataRolesValues":[100,70,60,90,90,70,40,80],
+        "description":"rebrandingDescription",
+        "company":{
+            "name":"indra",
+            "web":"www.indra.es"
+        },
+        "client":{
+            "name":"IAGCargo",
+            "web":"https://www.iagcargo.com/"
+        },"order":2                
+    },
+     {
+        "type":"project",
+        "name":"Recramaciones",
+        "icon":"img/Support_50px.png",
+        "classColor":"cd-timeline__img--movie",
+        "year":"2015-2016",
+        "role":"Fullstack Java Developer",
+        "dataRolesLabel":["Java","BBDD Oracle","webservices","javascript","Prototype","Adobe Flex","Scrumm"],
+        "dataRolesValues":[100,70,70,70,60,20],
+        "description":"aduanasDescription",
+        "company":{
+            "name":"indra",
+            "web":"www.indra.es"
+        },
+        "client":{
+            "name":"Iberia Cargo",
+            "web":"https://www.iagcargo.com/"
+        },"order":3                
+    },
+     {
+        "type":"project",
+        "name":"IAG CARGO CMS adapter",
+        "icon":"img/Support_50px.png",
+        "classColor":"cd-timeline__img--movie",
+        "year":"2015",
+        "role":"Fullstack Java Developer",
+        "dataRolesLabel":["Java","BBDD Oracle","Oracle WebCenter Site","javascript","JQuery","Scrumm"],
+        "dataRolesValues":[100,70,60,90,90,40],
+        "description":"cmsAdapterDescription",
+        "company":{
+            "name":"indra",
+            "web":"www.indra.es"
+        },
+        "client":{
+            "name":"IAGCargo",
+            "web":"https://www.iagcargo.com/"
+        },"order":4                
+    }, {
+        "type":"project",
+        "name":"Aduanas",
+        "icon":"img/Support_50px.png",
+        "classColor":"cd-timeline__img--movie",
+        "year":"2014",
+        "role":"Fullstack Java Developer",
+        "dataRolesLabel":["Java","BBDD Oracle","webservices","javascript","Prototype","Adobe Flex","Scrumm"],
+        "dataRolesValues":[100,70,70,70,60,20],
+        "description":"aduanasDescription",
+        "company":{
+            "name":"indra",
+            "web":"www.indra.es"
+        },
+        "client":{
+            "name":"Iberia Cargo",
+            "web":"https://www.iagcargo.com/"
+        },"order":4                
+    },
+    {
+        "type":"project",
+        "name":"Truck Trucking",
+        "icon":"img/Support_50px.png",
+        "classColor":"cd-timeline__img--movie",
+        "year":"2012-2013",
+        "role":"Java Developer",
+        "dataRolesLabel":["Java","BBDD Oracle","javascript","webservice","JQuery","Scrumm"],
+        "dataRolesValues":[100,70,60,9020],
+        "description":"truckiescription",
+        "company":{
+            "name":"indra",
+            "web":"www.indra.es"
+        },
+        "client":{
+            "name":"IAGCargo",
+            "web":"https://www.iagcargo.com/"
+        },"order":5                
+    }, 
+    {
+        "type":"project",
+        "name":"Truck",
+        "icon":"img/Support_50px.png",
+        "classColor":"cd-timeline__img--movie",
+        "year":"2011-2012",
+        "role":"Java Developer",
+        "dataRolesLabel":["Java","BBDD Oracle","javascript","webservice","JQuery","Scrumm"],
+        "dataRolesValues":[100,70,60,9020],
+        "description":"truckiescription",
+        "company":{
+            "name":"indra",
+            "web":"www.indra.es"
+        },
+        "client":{
+            "name":"IAGCargo",
+            "web":"https://www.iagcargo.com/"
+        },"order":6                
+    },       
+     {
+        "type":"project",
+        "name":"Portal Cargo",
+        "icon":"img/Support_50px.png",
+        "classColor":"cd-timeline__img--movie",
+        "year":"2007-2010",
+        "role":"Java Developer",
+        "dataRolesLabel":[],
+        "dataRolesValues":[],
+        "description":"sgarDescription",
+        "company":{
+            "name":"indra",
+            "web":"www.indra.es"
+        },
+        "client":{
+            "name":"Iberia Cargo",
+            "web":"https://www.iagcargo.com/"
+        },"order":7                
+    },
+    {
+        "type":"project",
+        "name":"CICPCargo",
+        "icon":"img/Support_50px.png",
+        "classColor":"cd-timeline__img--movie",
+        "year":"2006-2007",
+        "role":"Java Developer",
+        "dataRolesLabel":["Java","BBDD Oracle","javascript","webservice","JQuery","Scrumm"],
+        "dataRolesValues":[100,70,60,9020],
+        "description":"truckiescription",
+        "company":{
+            "name":"indra",
+            "web":"www.indra.es"
+        },
+        "client":{
+            "name":"IAGCargo",
+            "web":"https://www.iagcargo.com/"
+        },"order":8                
+    },
+     {
+        "type":"project",
+        "name":"Bonus",
+        "icon":"img/Support_50px.png",
+        "classColor":"cd-timeline__img--movie",
+        "year":"2005",
+        "role":"Java Developer",
+        "dataRolesLabel":[],
+        "dataRolesValues":[],
+        "description":"sgarDescription",
+        "company":{
+            "name":"ICA",
+            "web":"ica"
+        },
+        "client":{
+            "name":"Iberia Cargo",
+            "web":"https://www.iagcargo.com/"
+        },"order":9                
+    }, {
+        "type":"project",
+        "name":"SGAR",
+        "icon":"img/Support_50px.png",
+        "classColor":"cd-timeline__img--movie",
+        "year":"1998-2005",
+        "role":"C/C++ Developer",
+        "dataRolesLabel":[],
+        "dataRolesValues":[],
+        "description":"sgarDescription",
+        "company":{
+            "name":"Grupo Delta ISS",
+            "web":""
+        },
+        "client":{
+            "name":"Iberia Cargo",
+            "web":"https://www.iagcargo.com/"
+        },"order":10                
+    },
+     {
+        "type":"formacion",
+        "name":"Programación",
+        "icon":"img/BookShelf_50px.png",
+        "classColor":"cd-timeline__img--picture",
+        "year":"1998-2005",      
+        "dataRolesLabel":[],
+        "dataRolesValues":[],
+        "description":"sgarDescription",
+        "order":11
+    },
+     {
+        "type":"formacion",
+        "name":"IB San Cristobal de los Angeles",
+        "icon":"img/GraduationCap_50px.png",
+        "classColor":"cd-timeline__img--location",
+        "year":"1998-2005",      
+        "dataRolesLabel":[],
+        "dataRolesValues":[],
+        "description":"sgarDescription",
+        "order":12           
+    },
+     {
+        "type":"formacion",
+        "name":"IB San Cristobal de los Angeles",
+        "icon":"img/GraduationCap_50px.png",
+        "classColor":"cd-timeline__img--location",
+        "year":"1998-2005",      
+        "dataRolesLabel":[],
+        "dataRolesValues":[],
+        "description":"sgarDescription",
+        "order":13           
+    }
+    
+    
+    
+]
