@@ -1,7 +1,5 @@
 
 
-	
-
 	requirejs.config({
 		baseUrl: '/js/lib',
 		waitSeconds : 30,
@@ -11,7 +9,10 @@
 			i18n:'jquery18i/js/jquery18i.min',
 			simplemodal:'jquery/js/jquery.simplemodal.1.4.4.min',
 			handlebars:'handlebars/js/handlebars-v4.0.11',
-			cookie:'cookie/jquery.cookiebar'				
+			cookie:'cookie/jquery.cookiebar',
+			chart:'chart/Chart.min',
+			timeline:'timeline/main',
+			html2canvas:'html2canvas.min'				
 		
 			
 		},
@@ -34,28 +35,50 @@
 	});
 	
 	
-	define ('app',["jquery","i18n","handlebars","simplemodal"],function(jQuery,i18n,handlebars,simplemodal){		
+	define ('app',["jquery","i18n","handlebars","simplemodal",'chart','html2canvas'],function(jQuery,i18n,handlebars,simplemodal,chart,html2canvas){		
 		 
 		var app={};		 
 		  app.initPage = function (page,callback){
 			   app.loadTemplate ('/templates/menu.hbs',function(template) {				    
 					$('#menu').prepend(template);				   	
 						if (page == 'filmmaker'){					
-								app.loadTemplate ('/templates/film.hbs',function(template) {								
-									app.processData('filmmaker',template,function (data,temp){					
-										$('#bodyContainer').prepend(temp(data)).each(function() {
-											app.loadTemplate ('/templates/footer.hbs',function(template) {	
-												$('#footer').prepend(template);								
-												callback();	
-											}); 													
-										});							
-									});								
-								});								  
-						  } else if (page=='software'){							
-							app.loadTemplate ('/templates/footer.hbs',function(template) {	
-								$('#footer').prepend(template);								
-								callback();	
-							}); 	
+							app.loadTemplate ('/templates/film.hbs',function(template) {
+								app.processData('filmmaker',template,function (data){
+									$('#bodyContainer').prepend(template(data)).each(function() {
+										app.loadTemplate ('/templates/footer.hbs',function(template) {	
+											$('#footer').prepend(template);								
+											callback();	
+										}); 													
+									});	
+								});	
+							});
+															  
+						  } else if (page=='software'){					
+							app.loadTemplate ('/templates/timeline.hbs',function(template) {								
+								app.processData('software',template,function (data) {																			
+									var tmp = data.sort(function(a, b){											
+										return a.order - b.order}
+									);										
+									
+									$('#timeline').replaceWith(template(tmp)).each(function() {
+										
+										/*app.createTimeLine();
+										
+										$('canvas').each(function (c,v){
+											//app.createGraph($(v));
+										});*/
+										$('.cd-timeline').hide();
+
+										app.loadTemplate ('/templates/footer.hbs',function(template) {	
+											$('#footer').prepend(template);								
+											callback();	
+										}); 
+									});	
+								} );
+							});
+							
+
+								
 						  } else if (page=='photographer'){		
 							if (app.getUrlParameter('category') !== undefined ){			
 							
@@ -99,8 +122,7 @@
 										$('#bodyContainer').prepend (templateProject(dataProject)).each(function(){
 										
 											app.loadTemplate ('/templates/footer.hbs',function(template) {	
-												$('#footer').prepend(template);								
-												
+												$('#footer').prepend(template);																				
 												$('#listCrew > div ').each(function (t,v){																									
 													app.getRecordAirtableSync($(v).attr('id'),function(dataCrew){																																			;														
 														$(v).append(':<a target="_blank" href="'+ dataCrew.fields.url+'"> '+dataCrew.fields.name+'</a>');														
@@ -221,15 +243,15 @@
 		   }
 
 		   app.getRecordAirtable = function (id,callback) {				
-			$.ajax({
-				url: 'https://api.airtable.com/v0/appsYO7qZ88De1ddY/categorias/'+id+'?api_key=keyG5AhVcdlRu4UfU',									
-				async: true,
-				success: function (data) {
-					callback(data)
-										
-				}
-			});		
-			
+				$.ajax({
+					url: 'https://api.airtable.com/v0/appsYO7qZ88De1ddY/categorias/'+id+'?api_key=keyG5AhVcdlRu4UfU',									
+					async: true,
+					success: function (data) {
+						callback(data)
+											
+					}
+				});		
+			}	
 			app.getRecordAirtableSync = function (id,callback) {				
 				$.ajax({
 					url: 'https://api.airtable.com/v0/appsYO7qZ88De1ddY/categorias/'+id+'?api_key=keyG5AhVcdlRu4UfU',									
@@ -240,8 +262,129 @@
 					}
 				});						
 			}
-		
-	   }		  
+			app.getFilmFireBase = function(callback) {
+				$.ajax({
+					url: 'https://amfbbdd.firebaseio.com/filmmaker/.json',									
+					async: true,
+					success: function (data) {
+						callback(data);											
+					}
+				});		
+			}
+			app.getSoftwareFireBase = function(callback) {
+				$.ajax({
+					url: 'https://amfbbdd.firebaseio.com/software/.json',									
+					async: true,
+					success: function (data) {
+						callback(data);											
+					}
+				});		
+			}
+			app.createTimeLine = function () {
+				require(['timeline'], function(timelinefoo) {
+
+				});
+			}
+
+			app.createGraph = function (destino) {
+
+				var datos = $(destino).attr('data-values').split(',');
+				var labels = $(destino).attr('data-labels').split(',');;
+
+				console.log(datos);
+				console.log(labels);
+
+				window.chartColors = {
+					red: 'rgb(255, 99, 132)',
+					orange: 'rgb(255, 159, 64)',
+					yellow: 'rgb(255, 205, 86)',
+					green: 'rgb(75, 192, 192)',
+					blue: 'rgb(54, 162, 235)',
+					purple: 'rgb(153, 102, 255)',
+					grey: 'rgb(201, 203, 207)'
+				  };
+			  
+				  var chartColors = window.chartColors;
+				  var color = Chart.helpers.color;
+				 
+				  var config = {
+					data: {
+					  datasets: [{
+						data:datos,
+						backgroundColor: [
+						  color(chartColors.red).alpha(0.5).rgbString(),
+						  color(chartColors.orange).alpha(0.5).rgbString(),
+						  color(chartColors.yellow).alpha(0.5).rgbString(),
+						  color(chartColors.blue).alpha(0.5).rgbString(),
+						  color(chartColors.green).alpha(0.5).rgbString(),
+						  color(chartColors.purple).alpha(0.5).rgbString(),
+						  color(chartColors.grey).alpha(0.5).rgbString()			 
+						],
+						label: '' // for legend
+					  }],
+					  labels: labels
+					},
+					options: {
+					  responsive: true,
+					  legend: {
+						position: 'bottom',
+						labels: {
+							fontColor: 'white'
+						}
+					  },
+					  title: {
+						display: true,
+						text: 'Tech knowledge',
+						fontColor: 'white'						
+					  },
+					  scale: {
+						ticks: {
+						  beginAtZero: true,
+						  suggestedMax: 100						 
+						},
+						reverse: false
+					  },
+					  animation: {
+						animateRotate: false,
+						animateScale: true
+					  }
+					}
+				  };
+			  
+				  var ctx = destino[0];
+			  	
+				  window.myPolarArea = Chart.PolarArea(ctx, config);
+				
+			
+			}
+			app.initFire = function (callback) {
+			
+					var config = {
+						apiKey: "AIzaSyDdWwdVYJkRFg2e8qICAaHZ5oNInbHGbqs",
+						authDomain: "amfbbdd.firebaseapp.com",
+						databaseURL: "https://amfbbdd.firebaseio.com",
+						projectId: "amfbbdd",
+						storageBucket: "amfbbdd.appspot.com",
+						messagingSenderId: "188993003080"
+					};
+					firebase.initializeApp(config);
+					var defaultAuth = firebase.auth();
+					
+					defaultAuth.signInAnonymously().catch(function(error) {
+						callback(null);
+					});
+					defaultAuth.onAuthStateChanged(function(user) {				
+						if (user) {
+							window.user = user;
+							// User is signed in.
+							var isAnonymous = user.isAnonymous;						
+							if (isAnonymous) {
+								callback(user.uid);
+							}	
+						} 
+					});				  				   
+			}
+	  	  
 		 return app;											
 	});
 	
@@ -249,6 +392,9 @@
 		
 	
 require(['app','jquery','bootstrap',"cookie"], function (App,jQuery) {
+
+
+
 // Execute App
 	$(document).ready(function(){
 

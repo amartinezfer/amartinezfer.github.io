@@ -2,6 +2,8 @@
 <html  page="software">
 
   <head>
+    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+  
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -31,6 +33,7 @@
     <link href="/css/tachyons.min.css" rel="stylesheet">
   
     <link href="/css/custom.css" rel="stylesheet">
+    <link href="/css/timeline.css" rel="stylesheet">
 	
 	<script data-main="/js/load.js" src="/js/lib/required/js/require.js"></script>
 	
@@ -39,23 +42,44 @@
   </head>
 
   <body>
+  
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W4DB7BL"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
   <!-- Navigation -->
-<nav id='menu' class="navbar"></nav>
-    
 
-    <!-- Page Content -->
-    <section class="py-5">
-      <div id='bodyContainer' class="container">
-       
+ 
+  <nav id='menu' class="navbar"></nav>
+  <section id='capture' class="py-5">
+    <div id='bodyContainer' class="container">
+        <div class="row text-justify text-lg-left">
+          <div class="item well ">              
+              <div  class="d-block mb-4 h-100">                 
+                <img class='mh3' style='vertical-align: text-top;float: left;' width="100px" src='/img/foto.jpg' />                   
+                <p class='i18n pa2 ' data-i18n="datos"></p>   
+                <a class='db link dim  near-white hover-light-gray' href="/resources/cvAlbertoMartinez.pdf"  target="_blank">
+                  <img src="/img/PDF2_50px.png"/>                             
+                </a>
+              </div>              
+            </div>  
+          <div class="item well ">              	
+                <div  class="d-block mb-4 h-100">                 
+                  <a class='db link dim  near-white hover-light-gray' href="http://linkedin.com/in/alberto-martínez-fernández-16328440"  target="_blank">
+                  <img class='mh3' style='vertical-align: text-top;float: left;' width="50px" src='/img/Linkedin.png' />                   
+                   </a>
+                  <p class='i18n pa2 ' data-i18n="profile"></p>                  
+                </div>
+                 
+              </div>           
       </div>
-    </section>
-
+    </div>
+    <div id='timeline'></div>   
+  </section>
+    <!-- Page Content -->   
+   
    <!-- Footer -->
-   <footer id='footer' class="py-5 bg-dark"></footer>
+   <footer id='footer' class="py-5 bg-dark bt b--white-30"></footer>
   </body>
-
+ 
 </html>
