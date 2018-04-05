@@ -53,7 +53,17 @@
 							});
 															  
 						  } else if (page=='software'){					
-							app.loadTemplate ('/templates/timeline.hbs',function(template) {								
+							$('canvas').each(function (c,v){
+								app.createGraph($(v));
+							});
+							
+
+							app.loadTemplate ('/templates/footer.hbs',function(template) {	
+								$('#footer').prepend(template);								
+								callback();	
+							}); 
+							
+							/*app.loadTemplate ('/templates/timeline.hbs',function(template) {																
 								app.processData('software',template,function (data) {																			
 									var tmp = data.sort(function(a, b){											
 										return a.order - b.order}
@@ -62,19 +72,11 @@
 									$('#timeline').replaceWith(template(tmp)).each(function() {
 										
 										/*app.createTimeLine();
-										
-										$('canvas').each(function (c,v){
-											//app.createGraph($(v));
-										});*/
 										$('.cd-timeline').hide();
-
-										app.loadTemplate ('/templates/footer.hbs',function(template) {	
-											$('#footer').prepend(template);								
-											callback();	
-										}); 
+										
 									});	
 								} );
-							});
+							});*/
 							
 
 								
@@ -273,9 +275,6 @@
 				var datos = $(destino).attr('data-values').split(',');
 				var labels = $(destino).attr('data-labels').split(',');;
 
-				console.log(datos);
-				console.log(labels);
-
 				window.chartColors = {
 					red: 'rgb(255, 99, 132)',
 					orange: 'rgb(255, 159, 64)',
@@ -307,11 +306,13 @@
 					  labels: labels
 					},
 					options: {
-					  responsive: true,
+					  responsive: true,					  
 					  legend: {
 						position: 'bottom',
+						fullWidth:false,
 						labels: {
-							fontColor: 'white'
+							fontColor: 'white',
+							fontSize:10
 						}
 					  },
 					  title: {
@@ -327,46 +328,19 @@
 						reverse: false
 					  },
 					  animation: {
-						animateRotate: false,
+						animateRotate: true,
 						animateScale: true
 					  }
 					}
 				  };
 			  
 				  var ctx = destino[0];
-			  	
+				  ctx.height = 250;
 				  window.myPolarArea = Chart.PolarArea(ctx, config);
 				
 			
 			}
-			app.initFire = function (callback) {
-			
-					var config = {
-						apiKey: "AIzaSyDdWwdVYJkRFg2e8qICAaHZ5oNInbHGbqs",
-						authDomain: "amfbbdd.firebaseapp.com",
-						databaseURL: "https://amfbbdd.firebaseio.com",
-						projectId: "amfbbdd",
-						storageBucket: "amfbbdd.appspot.com",
-						messagingSenderId: "188993003080"
-					};
-					firebase.initializeApp(config);
-					var defaultAuth = firebase.auth();
-					
-					defaultAuth.signInAnonymously().catch(function(error) {
-						callback(null);
-					});
-					defaultAuth.onAuthStateChanged(function(user) {				
-						if (user) {
-							window.user = user;
-							// User is signed in.
-							var isAnonymous = user.isAnonymous;						
-							if (isAnonymous) {
-								callback(user.uid);
-							}	
-						} 
-					});				  				   
-			}
-	  	  
+		
 		 return app;											
 	});
 	
