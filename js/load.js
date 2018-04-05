@@ -261,24 +261,7 @@
 					}
 				});						
 			}
-			app.getFilmFireBase = function(callback) {
-				$.ajax({
-					url: 'https://amfbbdd.firebaseio.com/filmmaker/.json',									
-					async: true,
-					success: function (data) {
-						callback(data);											
-					}
-				});		
-			}
-			app.getSoftwareFireBase = function(callback) {
-				$.ajax({
-					url: 'https://amfbbdd.firebaseio.com/software/.json',									
-					async: true,
-					success: function (data) {
-						callback(data);											
-					}
-				});		
-			}
+			
 			app.createTimeLine = function () {
 				require(['timeline'], function(timelinefoo) {
 
