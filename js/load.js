@@ -52,10 +52,11 @@
 								});	
 							});
 															  
-						  } else if (page=='software'){					
-							$('canvas').each(function (c,v){
-								app.createGraph($(v));
-							});
+						  } else if (page=='software'){		
+							
+							R.pipe ( 
+								R.filter((c,v)=>app.createGraph($(v)))
+							)($('canvas')); 
 							
 
 							app.loadTemplate ('/templates/footer.hbs',function(template) {	
@@ -368,9 +369,9 @@ require(['app','jquery','bootstrap',"cookie"], function (App,jQuery) {
 					$.i18n.load(data.en);	
 				}								  
 		  
-				$('.i18n').each(function (i,e){					
-					$(e)._t($(e).attr('data-i18n'));
-				});				
+				R.pipe ( 
+					R.filter((i,e)=> $(e)._t($(e).attr('data-i18n')) )
+				)($('.i18n')); 			
 			});	
 
 			$('#langChange').on('click',function(){
@@ -388,9 +389,11 @@ require(['app','jquery','bootstrap',"cookie"], function (App,jQuery) {
 						$.i18n.load(data.en);	
 					}								  
 			  
-					$('.i18n').each(function (i,e){					
-						$(e)._t($(e).attr('data-i18n'));
-					});				
+					R.pipe ( 
+						R.filter((i,e)=> $(e)._t($(e).attr('data-i18n')) )
+					)($('.i18n')); 
+
+								
 				});	
 
 
