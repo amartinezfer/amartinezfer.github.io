@@ -357,7 +357,6 @@ require(['app','jquery','bootstrap',"cookie"], function (App,jQuery) {
 		var userLang = navigator.language || navigator.userLanguage; 
 		
 		$('html').attr('lang',userLang.split('-')[0]);
-	
 		
 		App.initPage($('html').attr('page'),function(){
 
