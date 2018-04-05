@@ -200,11 +200,18 @@
 		  }
 		  
 		  app.translate = function (callback){			  
-			  $.getJSON( "/resources/language.json"+'?_hc='+new Date().getTime(), function( data ) {					
+			  $.getJSON( "/resources/language.json"+'?_hc='+new Date().getTime(), function( data ) {
+				  					
 					callback(data,$('html').attr('lang'));				  
 			  });			  			  
 		  }		
 		  
+		  app.translate2 = new Promise ( (resolve,reject) => {
+				$.getJSON( "/resources/language.json"+'?_hc='+new Date().getTime(), function( data ) {													
+					resolve(data);					
+				});	
+		  });
+
 		  app.getUrlParameter = function getUrlParameter(sParam) {
 			  
 			var sPageURL = decodeURIComponent(window.location.search.substring(1)),
@@ -358,46 +365,24 @@ require(['app','jquery','bootstrap',"cookie"], function (App,jQuery) {
 		var userLang = navigator.language || navigator.userLanguage; 
 		
 		$('html').attr('lang',userLang.split('-')[0]);
-		
+		console.log($('html').attr('lang'));
 		App.initPage($('html').attr('page'),function(){
 
-			App.translate( function (data,lang) {
-				
-				if ( lang ==='es'){
-					$.i18n.load(data.es);	
-				} else {
-					$.i18n.load(data.en);	
-				}								  
-		  
-				R.pipe ( 
-					R.filter((i,e)=> $(e)._t($(e).attr('data-i18n')) )
-				)($('.i18n')); 			
-			});	
-
-			$('#langChange').on('click',function(){
-				
-				if ("es" === $('html').attr('lang')){
-					$('html').attr('lang','en');
-				} else {
-					$('html').attr('lang','es');
-				}
-				App.translate( function (data,lang) {
-				
-					if ( lang ==='es'){
+			App.translate2.then(
+				function (data) {				
+						
+					if (  $('html').attr('lang') ==='es'){
 						$.i18n.load(data.es);	
 					} else {
 						$.i18n.load(data.en);	
-					}								  
-			  
+					}	
+					
 					R.pipe ( 
 						R.filter((i,e)=> $(e)._t($(e).attr('data-i18n')) )
-					)($('.i18n')); 
+					)($('.i18n')); 			
+				}
+			);
 
-								
-				});	
-
-
-			});
 		});
 		
 	
