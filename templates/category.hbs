@@ -9,11 +9,11 @@
 	 </div>
  {{#each records as |records|}}	
   	{{#if records.fields.visible}}	 
-		<article>
+		<article itemscope itemtype="http://schema.org/CreativeWork">
         <div class="item well">
-			<a class='category db link dim  near-white hover-light-gray' data-id='{{records.id}}'>
-					<img  class="img-fluid img-thumbnail" src="{{records.fields.img.0.url}}" alt="">			
-					<div class="caption  w-100 mt-1 i18n mt1 ttc pt3" data-i18n="{{records.fields.name}}"></div>
+			<a itemprop="url" class='category db link dim  near-white hover-light-gray' data-id='{{records.id}}'>
+					<img itemprop="image" class="img-fluid img-thumbnail" src="{{records.fields.img.0.url}}" alt="">			
+					<div itemprop="name" class="caption  w-100 mt-1 i18n mt1 ttc pt3" data-i18n="{{records.fields.name}}"></div>
 			</a>
 		</div>	
         </article>	

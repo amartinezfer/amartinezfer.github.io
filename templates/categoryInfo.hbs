@@ -4,11 +4,11 @@
 	<div class="row text-center text-lg-left">
 	
 	{{#each  this.fields.proyectos as | project|}}	
-		<article>
+		<article itemscope itemtype="http://schema.org/CreativeWork">
 			<div  data-projectId='{{project}}' class="item well project">
-				<a class='db link dim  near-white hover-light-gray'>
-						<img  class="img-fluid img-thumbnail" src="{{this.fields.img.0.url}}" alt="">			
-						<div class="caption  w-100 mt-1 i18n mt1 ttc pt3" data-i18n="{{records.fields.name}}"></div>
+				<a itemprop="url" class='db link dim  near-white hover-light-gray'>
+						<img itemprop="image" class="img-fluid img-thumbnail" src="{{this.fields.img.0.url}}" alt="">			
+						<div itemprop="name" class="caption  w-100 mt-1 i18n mt1 ttc pt3" data-i18n="{{records.fields.name}}"></div>
 				</a>	
 			</div>	 
 		</article>
