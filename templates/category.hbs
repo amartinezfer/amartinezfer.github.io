@@ -9,17 +9,20 @@
 	 </div>
  {{#each records as |records|}}	
   	{{#if records.fields.visible}}	 
-		<div class="item well">
+		<article>
+        <div class="item well">
 			<a class='category db link dim  near-white hover-light-gray' data-id='{{records.id}}'>
 					<img  class="img-fluid img-thumbnail" src="{{records.fields.img.0.url}}" alt="">			
 					<div class="caption  w-100 mt-1 i18n mt1 ttc pt3" data-i18n="{{records.fields.name}}"></div>
 			</a>
-		</div>		
+		</div>	
+        </article>	
 	{{/if}}	    	 
 {{/each}}
 </div>
 <div>
-<h2 class='tc i18n'  data-i18n="formacion"></h2>
+    <article>
+        <h2 class='tc i18n'  data-i18n="formacion"></h2>
         <br/>
         <ul class='list well formacion'>
             <li class='i18n  pa2' data-i18n="f16f"></li>	
@@ -39,5 +42,5 @@
             <li class='i18n pa2' data-i18n="f2f"></li>	
             <li class='i18n pa2 ' data-i18n="f1f"></li>	            
         </ul>
-
+    </article>
 </div>

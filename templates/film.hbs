@@ -3,6 +3,7 @@
  <p class='i18n' data-i18n="filmmakerDescription"><p/>
  <div class="row text-center text-lg-left">
  {{#each films as |myFilm|}}		 
+		 <article>
 		 <div class="item well">  
 			<a class='db link dim  near-white hover-light-gray' href="{{myFilm.link}}"  target="_blank">
 			<div  class="d-block mb-4 h-100">
@@ -16,9 +17,9 @@
 					<p class='i18n pa2' data-i18n="{{myFilm.sip}}"></p>
 				</div>
 			</div>
-			</a>
-		    	 
+			</a>		    	 
 		</div>
+		</article>
 {{/each}}
 </div>
 
