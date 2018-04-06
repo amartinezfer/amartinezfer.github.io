@@ -58,11 +58,12 @@
 								R.filter((c,v)=>app.createGraph($(v)))
 							)($('canvas')); 
 							
-
-							app.loadTemplate ('/templates/footer.hbs',function(template) {	
-								$('#footer').prepend(template);								
-								callback();	
-							}); 
+							app.loadTemplate2('/templates/footer.hbs').then(
+								(template)=>{
+									$('#footer').prepend(template);								
+									callback();	
+							});
+						
 							
 							/*app.loadTemplate ('/templates/timeline.hbs',function(template) {																
 								app.processData('software',template,function (data) {																			
@@ -108,10 +109,11 @@
 													}													
 												});
 											});
-											app.loadTemplate ('/templates/footer.hbs',function(template) {	
-												$('#footer').prepend(template);								
-												callback();	
-											}); 	
+											app.loadTemplate2('/templates/footer.hbs').then(
+												(template)=>{
+													$('#footer').prepend(template);								
+													callback();	
+											});	
 										});
 									});											
 								});
@@ -122,18 +124,17 @@
 									app.getRecordAirtable(app.getUrlParameter('project'), function (dataProject) {
 																											
 										$('#bodyContainer').prepend (templateProject(dataProject)).each(function(){
-										
-											app.loadTemplate ('/templates/footer.hbs',function(template) {	
-												$('#footer').prepend(template);																				
-												$('#listCrew > div ').each(function (t,v){																									
-													app.getRecordAirtableSync($(v).attr('id'),function(dataCrew){																																			;														
-														$(v).append(':<a target="_blank" href="'+ dataCrew.fields.url+'"> '+dataCrew.fields.name+'</a>');														
-													});												
-												});	
-												callback();
-											});
-										});													
-										
+											app.loadTemplate2('/templates/footer.hbs').then(
+												(template)=>{
+													$('#footer').prepend(template);								
+													$('#listCrew > div ').each(function (t,v){																									
+														app.getRecordAirtableSync($(v).attr('id'),function(dataCrew){																																			;														
+															$(v).append(':<a target="_blank" href="'+ dataCrew.fields.url+'"> '+dataCrew.fields.name+'</a>');														
+														});												
+													});	
+													callback();
+											});											
+										});																							
 									});											
 								});
 
@@ -161,20 +162,22 @@
 	
 											});	
 										});
-										app.loadTemplate ('/templates/footer.hbs',function(template) {																						
-											$('#footer').prepend(template);								
-											callback();	
-										}); 
+										app.loadTemplate2('/templates/footer.hbs').then(
+											(template)=>{
+												$('#footer').prepend(template);								
+												callback();	
+										});
 									} );								
 								}); 								
 							}
 
 						  } else if (page=='home'){
 							// load footer
-							app.loadTemplate ('/templates/footer.hbs',function(template) {	
-								$('#footer').prepend(template);								
-								callback();	
-							}); 
+							app.loadTemplate2('/templates/footer.hbs').then(
+								(template)=>{
+									$('#footer').prepend(template);								
+									callback();	
+							});
 									  						  
 						  }																								
 				});
@@ -198,15 +201,9 @@
 					callback(data,template);				  
 			  });			  
 		  }
+			
 		  
-		  app.translate = function (callback){			  
-			  $.getJSON( "/resources/language.json"+'?_hc='+new Date().getTime(), function( data ) {
-				  					
-					callback(data,$('html').attr('lang'));				  
-			  });			  			  
-		  }		
-		  
-		  app.translate2 = new Promise ( (resolve,reject) => {
+		  app.translate = new Promise ( (resolve,reject) => {
 				$.getJSON( "/resources/language.json"+'?_hc='+new Date().getTime(), function( data ) {													
 					resolve(data);					
 				});	
@@ -227,6 +224,22 @@
 				}
 			}
 		};
+		app.loadTemplate2= function (path) {
+			return new Promise ( (resolve,reject) => {
+				var source, template;
+				$.ajax({
+					url: path+'?_hc='+new Date().getTime(),
+					dataType: "html",
+					success: function (data) {
+						source = data;						
+						resolve(handlebars.compile(source));
+					}
+				});		
+
+
+			});
+		}
+
 
 		   app.loadTemplate = function (path, callback) {
 				var source, template;
@@ -365,21 +378,17 @@ require(['app','jquery','bootstrap',"cookie"], function (App,jQuery) {
 		var userLang = navigator.language || navigator.userLanguage; 
 		
 		$('html').attr('lang',userLang.split('-')[0]);
-		console.log($('html').attr('lang'));
+	
 		App.initPage($('html').attr('page'),function(){
 
-			App.translate2.then(
-				function (data) {				
+			App.translate.then( (data)  => {				
 						
 					if (  $('html').attr('lang') ==='es'){
 						$.i18n.load(data.es);	
 					} else {
 						$.i18n.load(data.en);	
 					}	
-					
-					R.pipe ( 
-						R.filter((i,e)=> $(e)._t($(e).attr('data-i18n')) )
-					)($('.i18n')); 			
+					$('.i18n').filter((i,e)=> $(e)._t($(e).attr('data-i18n')) )					
 				}
 			);
 
