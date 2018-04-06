@@ -144,7 +144,7 @@
 									app.getCategoryAirtable( function (data) {
 																
 										$('#bodyContainer').prepend (template(data)).each(function() {																					
-											$('img').on('click',function(v){
+											$('#bqImg').on('click',function(v){
 											
 												$.modal('<img  src="/img/portada.jpg"/>',{
 													opacity:50,
