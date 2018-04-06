@@ -2,15 +2,7 @@
  <h1 class="my-4 text-center text-lg-left i18n" data-i18n="galleryTitle" ></h1>
  <p class='i18n' data-i18n="filmmakerDescription"><p/>
  <div class="row text-center text-lg-left" itemscope itemtype="http://schema.org/CreativeWork">
- {{#each films as |myFilm|}}		 
-		<script type="application/ld+json">
-			{
-				"@context": "http://schema.org/",
-				"@type": "Movie",
-				"name": "{{myFilm.title}}",
-				"url": "{{myFilm.link}}"
-			}
-		</script>	
+ {{#each films as |myFilm|}}		 		
 		 <article itemscope itemtype="http://schema.org/Movie"  >
 		 <div class="item well">  
 			<a itemprop="url" class='db link dim  near-white hover-light-gray' href="{{myFilm.link}}"  target="_blank">
