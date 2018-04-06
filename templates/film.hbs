@@ -1,20 +1,20 @@
 
  <h1 class="my-4 text-center text-lg-left i18n" data-i18n="galleryTitle" ></h1>
  <p class='i18n' data-i18n="filmmakerDescription"><p/>
- <div class="row text-center text-lg-left">
+ <div class="row text-center text-lg-left" itemscope itemtype="http://schema.org/CreativeWork">
  {{#each films as |myFilm|}}		 
-		 <article>
+		 <article itemscope itemtype="http://schema.org/Movie"  >
 		 <div class="item well">  
-			<a class='db link dim  near-white hover-light-gray' href="{{myFilm.link}}"  target="_blank">
+			<a itemprop="url" class='db link dim  near-white hover-light-gray' href="{{myFilm.link}}"  target="_blank">
 			<div  class="d-block mb-4 h-100">
-				<div class="w-100 mt-1 i18n tc"  data-i18n="{{myFilm.fechaProduccion}}"></div>
-				<div class="w-100 mt-1 i18n tc"  data-i18n="{{myFilm.role}}"></div>				
+				<div itemprop="contentReferenceTime" class="w-100 mt-1 i18n tc"  data-i18n="{{myFilm.fechaProduccion}}"></div>
+				<div itemprop="contributor" itemtype="http://schema.org/Person" class="w-100 mt-1 i18n tc"  data-i18n="{{myFilm.role}}"></div>				
 				
-				<img class="img-fluid img-thumbnail" src="{{myFilm.img}}" alt="">			
-				<div class="caption  w-100 mt-1 i18n pa2" data-i18n="{{myFilm.title}}"></div>
+				<img itemprop="image" class="img-fluid img-thumbnail" src="{{myFilm.img}}" alt="">			
+				<div itemprop="name" class="caption  w-100 mt-1 i18n pa2" data-i18n="{{myFilm.title}}"></div>
 				
 				<div class="w-100 mt-1 tj "  >
-					<p class='i18n pa2' data-i18n="{{myFilm.sip}}"></p>
+					<p itemprop="description" class='i18n pa2' data-i18n="{{myFilm.sip}}"></p>
 				</div>
 			</div>
 			</a>		    	 

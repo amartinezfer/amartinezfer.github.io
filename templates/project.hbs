@@ -1,7 +1,7 @@
 
       <!-- Portfolio Item Heading -->
-      <article>
-      <h1 class="my-4 ttu i18n" data-i18n='{{this.fields.title}}'></h1>
+      <article itemscope itemtype="http://schema.org/CreativeWork" >
+      <h1 itemprop="headline" class="my-4 ttu i18n" data-i18n='{{this.fields.title}}'></h1>
       <div class='row'>
       
     
@@ -9,7 +9,7 @@
       <div class="row">
          {{#if this.fields.descripcion}}
          <div class="item well">           
-          <p>{{this.fields.descripcion}}</p>
+          <p itemprop="about" >{{this.fields.descripcion}}</p>
         </div>
         {{/if}}
           <div class="item well">
@@ -46,7 +46,7 @@
               {{/each}}  
                 {{#each this.fields.fotografo as |fotografo| }}
                 <div id='{{fotografo}}' class='mr2' >
-                    <span class='h-card i18n ttc' data-i18n='fotografo'></span>
+                    <span itemprop="creator" class='h-card i18n ttc' data-i18n='fotografo'></span>
                 </div>
               {{/each}}                
           </div>
@@ -56,8 +56,8 @@
       <div class="row">
       	{{#if this.fields.visible}}
           {{#each this.fields.fotos as |foto| }}
-          <div class="item well">
-            <img src='{{foto.thumbnails.large.url}}' data-img='{{foto.url}}'></img>
+          <div class="item well" itemscope itemtype="http://schema.org/Photograph" >
+            <img  itemprop="image" src='{{foto.thumbnails.large.url}}' data-img='{{foto.url}}'></img>
           </div>  
         {{/each}}
        {{/if}}
