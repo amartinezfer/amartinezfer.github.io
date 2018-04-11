@@ -11,7 +11,8 @@
 			handlebars:'handlebars/js/handlebars-v4.0.11',
 			cookie:'cookie/jquery.cookiebar',
 			chart:'chart/Chart.min',
-			timeline:'timeline/main'					
+			timeline:'timeline/main',					
+			featherlight:'featherlight/featherlight.min'
 		
 			
 		},
@@ -28,13 +29,16 @@
 				},
 				cookie:{
 					deps : ['jquery']
+				},
+				featherlight:{
+					deps : ['jquery']
 				}
 				
 		 }
 	});
 	
 	
-	define ('app',["jquery","i18n","handlebars","simplemodal",'chart'],function(jQuery,i18n,handlebars,simplemodal,chart){		
+	define ('app',["jquery","i18n","handlebars","simplemodal",'chart',"featherlight"],function(jQuery,i18n,handlebars,simplemodal,chart,featherlight){		
 		 
 		var app={};		 
 		  app.initPage = function (page,callback){
@@ -124,6 +128,38 @@
 									app.getRecordAirtable(app.getUrlParameter('project'), function (dataProject) {
 																											
 										$('#bodyContainer').prepend (templateProject(dataProject)).each(function(){
+											
+											$('img').featherlight (
+														{type: 'html',
+														 afterOpen:function(event) {															 														 
+															 $('.featherlight-content').append($('<div  id="3d"/>'));
+															
+															 app.renderer=null;
+															 app.camera=null;
+															 app.scene=null;				
+														
+
+															 if (app.animateFrame != null){
+																window.cancelAnimationFrame(app.animateFrame);
+															 }
+															
+															 if (event.target.width /  event.target.height >= 1){																
+																app.fovDefault=30;
+																app.fovMax=10;
+															 } else {
+																app.fovDefault=40;
+																app.fovMax=20;
+															 }
+															 app.create3DView (event.target,$('#3d')).then(()=>{
+																
+
+															 }).catch((ex)=>{
+																 console.log(ex);
+															 });
+														 }
+														}
+												);
+
 											app.loadTemplate2('/templates/footer.hbs').then(
 												(template)=>{
 													$('#footer').prepend(template);								
@@ -362,6 +398,110 @@
 			
 			}
 		
+			app.renderer=null;
+			app.camera=null;
+			app.scene=null;							
+			app.animateFrame=null;		
+			app.steps=0;
+			app.fovDefault=40;
+			app.fovMax=20;
+			app.create3DView = function (img,target) {
+				return new Promise ( (resolve,reject) => {
+					
+					app.steps = 1;
+					app.zoom = 0.1;
+					
+				
+
+					app.camera = new THREE.PerspectiveCamera(app.fovDefault, img.width / img.height, 0.1, 1000);
+				    app.camera.position.set( 0, 0, 7 );
+					app.camera.lookAt( new THREE.Vector3(0, 0, 0) );
+				
+
+					// create the Scene
+					app.scene= new THREE.Scene();
+				
+					var ambientLight = new THREE.AmbientLight( 0xcccccc, 0.4 );
+					app.scene.add( ambientLight );
+
+					// create the Cube
+				
+					app.createCube(img).then((cube)=>{
+						
+						app.scene.add(cube)
+					
+						app.scene.background = new THREE.Color( 0x000000 );
+	
+						var container = target[ 0 ];
+	
+						app.renderer = new THREE.WebGLRenderer( { antialias: true });
+						app.renderer.setSize(img.width*2, img.height*2);
+						app.renderer.setPixelRatio( window.devicePixelRatio );
+						
+						container.appendChild( app.renderer.domElement );
+					
+						app.animate();
+
+					}).catch((ex)=>{
+						console.log(ex);
+					});
+
+					resolve(this);
+				})
+			}
+
+			app.animate= function () {			
+
+				   app.animateFrame = requestAnimationFrame( app.animate );
+				
+					if (app.camera.fov <= app.fovDefault && app.camera.fov >=app.fovMax ){					
+						app.camera.fov += -0.1;	
+						app.scene.traverse( function( object ) {
+							if ( object.isMesh === true ) {
+								object.rotation.x = app.steps++ * Math.PI/100;								
+							}
+						} );
+					} else {
+						window.cancelAnimationFrame(app.animateFrame);
+					}
+					app.camera.updateProjectionMatrix();
+				
+				   app.renderer.render( app.scene, app.camera );
+				
+			}
+			
+		
+
+			app.createCube = function (target){
+				return new Promise ((resolve,reject) => {
+				
+					var x = 1;
+					var y = 1;
+					if (target.width < target.height){
+						y= y * (target.height/target.width); 
+					} else {
+						x = x * ( target.width/target.height);
+					}
+					var geometry = new THREE.BoxBufferGeometry( x,y,1);
+					new THREE.ImageLoader()
+					.setCrossOrigin( '*' )
+					.load( target.src + "? api_key=keyG5AhVcdlRu4UfU", function ( image ) {
+							var texture = new THREE.CanvasTexture( image );
+							var material = new THREE.MeshBasicMaterial( {  map: texture } );
+							var cube = new THREE.Mesh( geometry, material );
+							cube.position.set(0,0, 0);							
+							resolve(cube);
+					});
+	
+					 
+				})
+			};
+				
+			
+				
+			
+
+
 		 return app;											
 	});
 	
