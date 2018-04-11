@@ -435,7 +435,9 @@
 						var container = target[ 0 ];
 	
 						app.renderer = new THREE.WebGLRenderer( { antialias: true });
-						app.renderer.setSize(img.width*2, img.height*2);
+						
+						app.renderer.setSize(img.width, img.height);
+						
 						app.renderer.setPixelRatio( window.devicePixelRatio );
 						
 						container.appendChild( app.renderer.domElement );
@@ -480,7 +482,7 @@
 					if (target.width < target.height){
 						y= y * (target.height/target.width); 
 					} else {
-						x = x * ( target.width/target.height);
+						x = x * (target.width/target.height);
 					}
 					var geometry = new THREE.BoxBufferGeometry( x,y,1);
 					new THREE.ImageLoader()
