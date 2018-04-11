@@ -459,8 +459,11 @@
 					if (app.camera.fov <= app.fovDefault && app.camera.fov >=app.fovMax ){					
 						app.camera.fov += -0.1;	
 						app.scene.traverse( function( object ) {
-							if ( object.isMesh === true ) {
-								object.rotation.x = app.steps++ * Math.PI/100;								
+							if ( object.isMesh === true && 
+								typeof undefined !=object.name && 
+								object.name=='imageCanvas') {
+								
+									object.rotation.x = app.steps++ * Math.PI/100;								
 							}
 						} );
 					} else {
@@ -491,6 +494,7 @@
 							var texture = new THREE.CanvasTexture( image );
 							var material = new THREE.MeshBasicMaterial( {  map: texture } );
 							var cube = new THREE.Mesh( geometry, material );
+							cube.name='imageCanvas';
 							cube.position.set(0,0, 0);							
 							resolve(cube);
 					});
