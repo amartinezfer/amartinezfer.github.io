@@ -426,7 +426,7 @@
 
 					// create the Cube
 				
-					app.createCube(img).then((cube)=>{
+					app.createCube(img,'imageCanvas').then((cube)=>{
 						
 						app.scene.add(cube)
 					
@@ -477,7 +477,7 @@
 			
 		
 
-			app.createCube = function (target){
+			app.createCube = function (target,name){
 				return new Promise ((resolve,reject) => {
 				
 					var x = 1;
@@ -494,7 +494,7 @@
 							var texture = new THREE.CanvasTexture( image );
 							var material = new THREE.MeshBasicMaterial( {  map: texture } );
 							var cube = new THREE.Mesh( geometry, material );
-							cube.name='imageCanvas';
+							cube.name=name;
 							cube.position.set(0,0, 0);							
 							resolve(cube);
 					});
