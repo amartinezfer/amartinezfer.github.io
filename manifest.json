@@ -3,19 +3,14 @@
     "name": "Alberto Martinez Fernandez Information Page",
     "icons": [
       {
-        "src": "launcher-icon-1x.png",
+        "src": "icons8_Science_Fiction_50px_2.png",
         "type": "image/png",
-        "sizes": "48x48"
+        "sizes": "50x50"
       },
       {
-        "src": "launcher-icon-2x.png",
+        "src": "icons8_Science_Fiction_100px",
         "type": "image/png",
-        "sizes": "96x96"
-      },
-      {
-        "src": "launcher-icon-4x.png",
-        "type": "image/png",
-        "sizes": "192x192"
+        "sizes": "100x100"
       }
     ],
     "start_url": "index.html?launcher=true",
