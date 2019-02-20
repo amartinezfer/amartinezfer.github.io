@@ -1,8 +1,6 @@
 var CACHE_NAME = 'amf-cache-v1';
 var urlsToCache = [
-  '/',
-  '/json/filmmaker.json',
-  '/json/software.json',
+  '/'
 ];
 
 self.addEventListener('install', function(event) {
