@@ -12,6 +12,8 @@ self.addEventListener('install', function(event) {
       .then(function(cache) {
         console.log('Opened cache');
         return cache.addAll(urlsToCache);
+      }).catch(function(ex){
+         console.log("open WS exception",ex);
       })
   );
 });
