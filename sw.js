@@ -1,63 +1,60 @@
-
-var APP_PREFIX = 'AMFWebPage_' ;    
-var VERSION = 'version_01' ;
-
-var CACHE_NAME = APP_PREFIX+VERSION;
-
-
+var CACHE_NAME = 'amf-cache-v1';
 var urlsToCache = [
   '/',
   '/json/filmmaker.json',
   '/json/software.json',
 ];
 
-// Respond with cached resources
-self.addEventListener('fetch', function (e) {
-  console.log('fetch request : ' + e.request.url)
-  e.respondWith(
-    caches.match(e.request).then(function (request) {
-      if (request) { // if cache is available, respond with cache
-        console.log('responding with cache : ' + e.request.url)
-        return request
-      } else {       // if there are no cache, try fetching request
-        console.log('file is not cached, fetching : ' + e.request.url)
-        return fetch(e.request)
-      }
-
-      // You can omit if/else for console.log & put one line below like this too.
-      // return request || fetch(e.request)
-    })
-  )
-})
-
-// Cache resources
-self.addEventListener('install', function (e) {
-  e.waitUntil(
-    caches.open(CACHE_NAME).then(function (cache) {
-      console.log('installing cache : ' + CACHE_NAME)
-      return cache.addAll(URLS)
-    })
-  )
-})
-
-// Delete outdated caches
-self.addEventListener('activate', function (e) {
-  e.waitUntil(
-    caches.keys().then(function (keyList) {
-      // `keyList` contains all cache names under your username.github.io
-      // filter out ones that has this app prefix to create white list
-      var cacheWhitelist = keyList.filter(function (key) {
-        return key.indexOf(APP_PREFIX)
+self.addEventListener('install', function(event) {
+  // Perform install steps
+  event.waitUntil(
+    caches.open(CACHE_NAME)
+      .then(function(cache) {
+        console.log('Opened cache');
+        return cache.addAll(urlsToCache);
+      }).catch(function(ex){
+         console.log("open WS exception",ex);
       })
-      // add current cache name to white list
-      cacheWhitelist.push(CACHE_NAME)
+  );
+});
 
-      return Promise.all(keyList.map(function (key, i) {
-        if (cacheWhitelist.indexOf(key) === -1) {
-          console.log('deleting cache : ' + keyList[i] )
-          return caches.delete(keyList[i])
-        }
-      }))
-    })
-  )
-})
+self.addEventListener('fetch', function(event) {
+    event.respondWith(
+      caches.match(event.request)
+        .then(function(response) {
+          // Cache hit - return response
+          if (response) {
+            return response;
+          }
+  
+          // IMPORTANT: Clone the request. A request is a stream and
+          // can only be consumed once. Since we are consuming this
+          // once by cache and once by the browser for fetch, we need
+          // to clone the response.
+          var fetchRequest = event.request.clone();
+  
+          return fetch(fetchRequest).then(
+            function(response) {
+              // Check if we received a valid response
+              if(!response || response.status !== 200 || response.type !== 'basic') {
+                return response;
+              }
+  
+              // IMPORTANT: Clone the response. A response is a stream
+              // and because we want the browser to consume the response
+              // as well as the cache consuming the response, we need
+              // to clone it so we have two streams.
+              var responseToCache = response.clone();
+  
+              caches.open(CACHE_NAME)
+                .then(function(cache) {
+                  cache.put(event.request, responseToCache);
+                });
+  
+              return response;
+            }
+          );
+        })
+      );
+  });
+  
