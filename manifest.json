@@ -11,6 +11,11 @@
         "src": "/img/icons8_Science_Fiction_100px.png",
         "type": "image/png",
         "sizes": "100x100"
+      },
+      {
+        "src": "/img/icons8_Science_Fiction_100px.png",
+        "type": "image/png",
+        "sizes": "150x150"
       }
     ],
     "start_url": "index.html?launcher=true",
