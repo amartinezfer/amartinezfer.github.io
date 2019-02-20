@@ -1,6 +1,7 @@
 var CACHE_NAME = 'amf-cache-v1';
 var urlsToCache = [
-  '/'
+  '/',
+  '/img/icons8_Science_Fiction_150px.png'
 ];
 
 self.addEventListener('install', function(event) {
