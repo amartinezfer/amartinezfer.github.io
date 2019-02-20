@@ -7,8 +7,8 @@ var CACHE_NAME = APP_PREFIX+VERSION;
 
 var urlsToCache = [
   '/',
-  '/amartinezfer.github.io/filmmaker.json',
-  '/amartinezfer.github.io/software.json',
+  '/json/filmmaker.json',
+  '/json/software.json',
 ];
 
 // Respond with cached resources
