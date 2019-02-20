@@ -1,8 +1,9 @@
 var CACHE_NAME = 'amf-cache-v1';
 var urlsToCache = [
   '/',
-  '/js',
-  '/css'
+  '/js/load.js',
+  '/css/custom.css',
+  '/css/timeline.css',
 ];
 
 self.addEventListener('install', function(event) {
