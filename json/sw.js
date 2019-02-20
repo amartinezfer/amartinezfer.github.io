@@ -1,12 +1,8 @@
 var CACHE_NAME = 'amf-cache-v1';
 var urlsToCache = [
   '/',
-  '/js/load.js',
-  '/css/custom.css',
-  '/css/timeline.css',
-  '/img/icons8_Science_Fiction_50px_2.png',
-  '(img/icons8_Science_Fiction_100px.png',
-  '/img/icons8_Science_Fiction_150px.png'
+  '/json/filmmaker.json',
+  '/json/software.json',
 ];
 
 self.addEventListener('install', function(event) {

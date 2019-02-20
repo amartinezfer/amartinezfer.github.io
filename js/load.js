@@ -1,15 +1,4 @@
-if ('serviceWorker' in navigator) {
-	window.addEventListener('load', function() {
-	  navigator.serviceWorker.register('/sw.js').then(function(registration) {
-		// Registration was successful
-		console.log('ServiceWorker registration successful with scope: ', registration.scope);
-	  }, function(err) {
-		// registration failed :(
-		console.log('ServiceWorker registration failed: ', err);
-	  });
-	});
 
-  }
 
 	requirejs.config({
 		baseUrl: '/js/lib',
@@ -527,7 +516,18 @@ if ('serviceWorker' in navigator) {
 	
 require(['app','jquery','bootstrap',"cookie"], function (App,jQuery) {
 
+	if ('serviceWorker' in navigator) {
+		window.addEventListener('load', function() {
+		  navigator.serviceWorker.register('/json/sw.js').then(function(registration) {
+			// Registration was successful
+			console.log('ServiceWorker registration successful with scope: ', registration.scope);
+		  }, function(err) {
+			// registration failed :(
+			console.log('ServiceWorker registration failed: ', err);
+		  });
+		});
 	
+	  }
 
 // Execute App
 	$(document).ready(function(){
