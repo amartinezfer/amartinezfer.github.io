@@ -65,34 +65,20 @@
 							  $('canvas').each(function (c,v){
 								app.createGraph($(v));
 							});
+							
 							 
-							app.loadTemplate ('/templates/footer.hbs',function(template) {	
-												$('#footer').prepend(template);								
-												callback();	
-							});   
-							  
-							/*app.loadTemplate2('/templates/footer.hbs').then(
-								(template)=>{
-									$('#footer').prepend(template);								
-									callback();	
-							});*/
-						
 							
-							/*app.loadTemplate ('/templates/timeline.hbs',function(template) {																
-								app.processData('software',template,function (data) {																			
-									var tmp = data.sort(function(a, b){											
-										return a.order - b.order}
-									);										
-									
-									$('#timeline').replaceWith(template(tmp)).each(function() {
-										
-										/*app.createTimeLine();
-										$('.cd-timeline').hide();
-										
-									});	
-								} );
-							});*/
+							try {  
+								app.loadTemplate2('/templates/footer.hbs').then(
+									(template)=>{
+										$('#footer').prepend(template);								
+										callback();	
+								});
+
+
+							catch (e){
 							
+							}
 
 								
 						  } else if (page=='photographer'){		
@@ -122,11 +108,15 @@
 													}													
 												});
 											});
-											app.loadTemplate2('/templates/footer.hbs').then(
-												(template)=>{
-													$('#footer').prepend(template);								
-													callback();	
-											});	
+											try{
+												app.loadTemplate2('/templates/footer.hbs').then(
+													(template)=>{
+														$('#footer').prepend(template);								
+														callback();	
+												});
+											} catch (e){
+												
+											}
 										});
 									});											
 								});
@@ -169,6 +159,7 @@
 														}
 												);
 
+											try{
 											app.loadTemplate2('/templates/footer.hbs').then(
 												(template)=>{
 													$('#footer').prepend(template);								
@@ -178,7 +169,10 @@
 														});												
 													});	
 													callback();
-											});											
+											});
+											catch (e){
+												
+											}
 										});																							
 									});											
 								});
@@ -207,22 +201,27 @@
 	
 											});	
 										});
+										try {
 										app.loadTemplate2('/templates/footer.hbs').then(
 											(template)=>{
 												$('#footer').prepend(template);								
 												callback();	
 										});
+										catch(e){
+										}
 									} );								
 								}); 								
 							}
 
 						  } else if (page=='home'){
 							// load footer
-							app.loadTemplate2('/templates/footer.hbs').then(
+							try{
+							  app.loadTemplate2('/templates/footer.hbs').then(
 								(template)=>{
 									$('#footer').prepend(template);								
 									callback();	
 							});
+							} catch(e){}
 									  						  
 						  }																								
 				});
