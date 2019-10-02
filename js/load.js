@@ -58,10 +58,14 @@
 															  
 						  } else if (page=='software'){		
 							
-							R.pipe ( 
+							/*R.pipe ( 
 								R.filter((c,v)=>app.createGraph($(v)))
 							)($('canvas')); 
-							
+							*/
+							  $('canvas').each(function (c,v){
+								app.createGraph($(v));
+							});
+							  
 							app.loadTemplate2('/templates/footer.hbs').then(
 								(template)=>{
 									$('#footer').prepend(template);								
@@ -545,7 +549,11 @@ require(['app','jquery','bootstrap',"cookie"], function (App,jQuery) {
 					} else {
 						$.i18n.load(data.en);	
 					}	
-					$('.i18n').filter((i,e)=> $(e)._t($(e).attr('data-i18n')) )					
+					//$('.i18n').filter((i,e)=> $(e)._t($(e).attr('data-i18n')) )					
+					
+					$('.i18n').each(function (i,e){					
+						$(e)._t($(e).attr('data-i18n'));
+					});	
 				}
 			);
 
