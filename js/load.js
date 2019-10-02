@@ -65,12 +65,17 @@
 							  $('canvas').each(function (c,v){
 								app.createGraph($(v));
 							});
+							 
+							app.loadTemplate ('/templates/footer.hbs',function(template) {	
+												$('#footer').prepend(template);								
+												callback();	
+							});   
 							  
-							app.loadTemplate2('/templates/footer.hbs').then(
+							/*app.loadTemplate2('/templates/footer.hbs').then(
 								(template)=>{
 									$('#footer').prepend(template);								
 									callback();	
-							});
+							});*/
 						
 							
 							/*app.loadTemplate ('/templates/timeline.hbs',function(template) {																
