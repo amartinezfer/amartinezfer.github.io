@@ -207,7 +207,7 @@
 												$('#footer').prepend(template);								
 												callback();	
 										});
-										catch(e){
+										}catch(e){
 										}
 									} );								
 								}); 								
