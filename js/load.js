@@ -170,7 +170,7 @@
 													});	
 													callback();
 											});
-											catch (e){
+											}catch (e){
 												
 											}
 										});																							
